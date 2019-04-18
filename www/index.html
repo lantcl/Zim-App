@@ -11,10 +11,11 @@
 
 <script src="js/createjs_1.1_min.js"></script>
 <script src="js/zim_10.js"></script>
+<script src="js/pizzazz_02.js"></script>
 <!-- <script src="https://d309knd7es5f10.cloudfront.net/pizzazz_02.js"></script> -->
-<!-- <script src="scripts/model.js" type="text/javascript"></script>
+<script src="scripts/model.js" type="text/javascript"></script>
 <script src="scripts/view.js" type="text/javascript"></script>
-<script src="scripts/control.js" type="text/javascript"></script> -->
+<script src="scripts/control.js" type="text/javascript"></script>
 
 
 <!-- use zimjs.com/distill for minified individual functions! -->
@@ -28,15 +29,15 @@
 // "full"	sets stage to window size with no scaling
 // "tagID"	add canvas to HTML tag of ID - set to dimensions if provided - no scaling
 
-var scaling = "fit"; // this will resize to fit inside the screen dimensions
+var scaling = "full"; 
 var width = 1024;
 var height = 768;
 var color = "#3E303B"; // ZIM colors like green, blue, pink, faint, clear, etc.
 var outerColor = "#3E303B"; // any HTML colors like "violet", "#333", etc. are fine to use
-// var path = "assets/"
-// var assets = ["logo.png", "page2-header.png","bg1.jpg", "bg2.jpg","bg3.jpg","bg4.jpg","bg5.jpg","bg6.jpg","bg7.jpg","bg8.jpg"]
-var frame = new Frame(scaling, width, height, color, outerColor);
-// var frame = new Frame(scaling, width, height, color, outerColor, assets, path);
+var path = "assets/"
+var assets = ["logo.png", "page2-header.png","bg1.jpg", "bg2.jpg","bg3.jpg","bg4.jpg","bg5.jpg","bg6.jpg","bg7.jpg","bg8.jpg"];
+// var frame = new Frame(scaling, width, height, color, outerColor);
+var frame = new Frame(scaling, width, height, color, outerColor, assets, path);
 
 frame.on("ready", function() {
     zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
@@ -45,10 +46,10 @@ frame.on("ready", function() {
     var stageW = frame.width;
     var stageH = frame.height;
 
-    var rect = new Rectangle(30, 30, "white").center().drag();
-    // const m = app.makeModel();
-    // const v = app.makeView(m, stage);
-    // const c = app.makeController(m, v, stage);
+    // var rect = new Rectangle(30, 30, "white").center().drag();
+    const m = app.makeModel();
+    const v = app.makeView(m, stage);
+    const c = app.makeController(m, v, stage);
 	
 
     stage.update(); // this is needed to show any changes
